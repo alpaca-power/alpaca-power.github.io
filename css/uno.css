@@ -12,12 +12,14 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
 	font: inherit;
 	vertical-align: baseline; }
 
+
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
 	display: block; }
 
 body {
 	line-height: 1; }
+
 
 ol, ul {
 	list-style: none; }
@@ -961,6 +963,7 @@ h5 {
 h1 {
 	margin-top: 0;
 	font-size: 3.2em;
+	font-family: 'Leckerli One', cursive;
 	line-height: 1.2em;
 	letter-spacing: .05em; }
 
