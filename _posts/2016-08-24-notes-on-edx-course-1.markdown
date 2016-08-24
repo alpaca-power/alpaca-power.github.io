@@ -10,7 +10,7 @@ Ok...I got stuck on the Lab 3 questions for Module 2 of the "DAT210x Programming
 _(Just to remind myself, Q1's solution was:_
 
 ```python
-df.read_csv('filepath', header=None, names=['motor', 'screw', 'pgain', 'vgain', 'class'])
+df = pd.read_csv('filepath', header=None, names=['motor', 'screw', 'pgain', 'vgain', 'class'])
 df.vgain.value_counts()
 ```
 _)_
@@ -26,14 +26,17 @@ Basically to find the samples I needed to do
 ```python
 df[(df['motor'] == 'E') & (df['screw'] == 'E')]
 ```
-Which gave me
+
+which resulted in
 
 ```
-34      E     E      3      2  1.100000
-85      E     E      4      3  0.843755
-131     E     E      6      5  0.281251
-139     E     E      4      2  0.506252
-150     E     E      3      1  0.700001>
+    motor screw  pgain  vgain     class
+0       E     E      5      4  0.281251
+35      E     E      3      2  1.100000
+86      E     E      4      3  0.843755
+132     E     E      6      5  0.281251
+140     E     E      4      2  0.506252
+151     E     E      3      1  0.700001
 ```
 
 However I had to count by hand, which seemed pretty stupid and definitely not how to solve the problem. Tired of flipping through the notes, I consulted DuckDuckGo. 
