@@ -49,7 +49,7 @@ pvalues <- matrix(NA, nrow = ncol(df.training.new), ncol = 2, dimnames = list(NU
 
 pvalues <- as.data.frame(pvalues)
 
-for(i in 1:30){
+for(i in 1:ncol(df.training.new)){
   
   df.lm <- glm(yvar ~ .,
                    data = df.training.new,
