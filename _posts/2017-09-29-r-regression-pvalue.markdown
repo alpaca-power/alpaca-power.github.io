@@ -19,7 +19,7 @@ df.lm <- glm(yvar ~ .,
             family = 'binomial')
 ```
 
-I was pleased at my progress (which really could have been much faster if I just typed -var1 -var2 etc in the regression model or select, but I was so set on having a list for some reason)... until I saw the summary, that was. That's still at least 30 variables, and with a quick look there were around 10 predictor variables with p-values greater than 0.05. Frankly, looking at those numbers made my eyes hurt.
+I was pleased at my progress (which really could have been much faster if I just typed `-var1 -var2 -etc` in the regression model or using `select`, but I was so set on having a list for some reason). Then I saw the model's `summary`, and was unhappy again. That's still at least 30 variables, and with a quick look there were around 10 predictor variables with p-values greater than 0.05. Frankly, looking at those numbers made my eyes hurt.
 
 Thus, I decided to try writng code that would automatically identify the predictor variable with the greatest p-value. This, again, took me more time than simply squinting at the numbers and finding the largest p-value...but no regrets.
 
@@ -34,20 +34,20 @@ coefs <- df.lm.summary %>%
               filter(row_number() == 1)
 ```
 
-Again, I was pleased at the progress... but then I would need to exclude these automatically identified variables over and over again through very manual typing (or copy & paste), which will result in a very long code/R markdown output file. Once again I was very annoyed by the prospect of this manual work, so I naturally tried to find a way of automating this menial task with a for loop. After ~30 minutes of trying to solve this pesky problem, I finally figured out how to do it with for loops! 
+Again, I thought I'd be satisfied... but then I would need to exclude these automatically identified variables over and over again through very manual typing (or copy & paste), which will result in a very long code/R markdown file. Once again I was very annoyed by the prospect of this manual work, so I naturally tried to find a way of automating this menial task with a `for` loop. After ~30 minutes of trying to solve this pesky problem, I finally figured out how to do it with `for` loops! (By the way, I do not really like R's for loops...) 
 
 The final code I used to build that regression model is as follows:
 
 ```r
 # Automating the model building based on significance level of 0.05
 
-## initialize data frame to record largest p-value in regression model
-pvalues <- matrix(NA, nrow = 30, ncol = 2, dimnames = list(NULL,c('variable', 'pvalue'))) 
-
-pvalues <- as.data.frame(pvalues)
-
 ## initialize dataset to use
 df.training.new <- select(df.training, -one_of(excluded_vars))
+
+## initialize data frame to record largest p-value in regression model, nrow = ncol() because it represents number of variables
+pvalues <- matrix(NA, nrow = ncol(df.training.new), ncol = 2, dimnames = list(NULL,c('variable', 'pvalue'))) 
+
+pvalues <- as.data.frame(pvalues)
 
 for(i in 1:30){
   
@@ -98,6 +98,6 @@ df.lm.final <- glm(yvar ~ .,
 summary(df.lm.final) # all predictor variables in final summary results have p-values <= 0.05
 ```
 
-Needless to say, I am very pleased by this method, even though I could've just done the same thing much faster if I manually looked at every summary table and typed/copy-pasted many iterations of the regression model. But the thought of doing such a repetitive task makes me feel lazy, so I would much rather spend time on figuring out how to automate this p-value elimination hell.... Maybe there is an existing library/function that does something similar, but it felt good figuring this out.
+Needless to say, I am very pleased with this method, even though I could've just done the same thing much faster if I manually looked at every summary table and typed/copy-pasted many iterations of the regression model. But the thought of doing such a repetitive task makes me feel lazy, so I would much rather spend time figuring out how to automate this p-value elimination hell.... Maybe there is an existing library/function that does something similar, but it felt good figuring this out.
 
 I shall use this process in the future if I, for some reason, ever need to use regression on a dataset with many variables again~
