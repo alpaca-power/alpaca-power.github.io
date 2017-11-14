@@ -5,6 +5,9 @@ category: [r]
 tags: [r]
 ---
 
+_Update: Ok... I know p-value elimination for model-building is deeply flawed per https://robjhyndman.com/hyndsight/crossvalidation/, though this nonetheless helped me save a lot of time during my midterms~_
+
+
 So, I'm taking the Applied Modern Statistical Learning Methods class at USC Marshall, and we have a homework where we're going to build a regression using a dataset with 38 variables. Right from the get go, we were to exclude 5 variables that were categorical/unique etc.
 
 I hate typing things over and over again, and I'm not a fan of copy & paste. Thus, it took me some researching to figure out how to exclude variables in a list using the `dplyr` package. Really handy.
