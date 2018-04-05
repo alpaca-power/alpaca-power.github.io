@@ -5,25 +5,22 @@ category: [r]
 tags: [r]
 ---
 
-Recently I've been very interested in admixture/geneology, though there sadly is not very great results for East Asian heritage. 
+Recently I've been very interested in admixture/geneology, though sadly results for East Asian heritage are lacking in terms of detail
+and usefulness if you test with a Western company. 
 Wegene results are kinda sketchy in terms of QA in my opinion, not to mention their standards for calculating admixture are somewhat
 questionable especially for imported data, but still quite interesting with a somewhat active community which provides some insight into
 how different provinces have different admixture proportions.
 
-I did a 23andme test last year during Black Friday, but soon became quite doubtful at results when I learned how little they tested on ancestry autosomal
-markers for v5 chips, thanks to their pivot to Caucasian-centric healthcare. I was quite unhappy at how I could not have a comparable
-admixture result with others due to low genotype rate.
+I did a 23andme test last year during Black Friday, but soon became quite doubtful at results when I learned how little they tested on ancestry autosomal markers for v5 chips, thanks to their pivot to Caucasian-centric healthcare. I was quite unhappy at how I could not have a comparable admixture result with others due to low genotype rate.
 
-A month ago I did AncestryDNA test just for comparison reasons before they also followed 23andme's steps in using customized GSA Chips,
-their ethnicity calc is still a joke for East Asians but I already expected that to be the case. 
+A month ago I did AncestryDNA test just for comparison reasons before they also followed 23andme's steps in using customized GSA Chips.
+Their ethnicity calc is still a joke for East Asians but I already expected that to be the case. 
 Genotype rate was much higher at .88 for some calcs, and now I wanted to combine both results for some DIYDodecad admixture calculations
-because...well there were still some differences between the two results, magnitude of difference depends on the calc. Not much difference
-for Eurogenes K36, for example.
+because...well, there were still some differences between the two results, magnitude of difference depends on the calc. Not much difference for Eurogenes K36, for example.
 
-There are tools to convert AncestryDNA to 23andMe v3 format so I just used that (found it on GitHub), but no tool to combine raw data,
+There are tools to convert AncestryDNA to 23andMe v3 format so I just used one of them (found on GitHub), but no tool to combine raw data,
 presumably because it's kinda a niche interest and combined files don't work properly for other sites that take in raw data. But, being
-someone who wants as accurate/detailed as possible results, I checked tips on how some people would go about combining the raw data using
-Excel Vlookup and I think managed to do it properly using R.
+someone who wants as accurate/detailed as possible results, I saw some people would go about combining the raw data using Excel Vlookup and I think managed to do it properly using R, I don't want to deal with Excel for large files.
 
 Definitely think there are better ways to approach this problem, but since I'm not going to do this task at scale (just combining 2 files
 for myself), I'll just go with what I have as below:
